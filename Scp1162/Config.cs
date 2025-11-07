@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using InventorySystem.Items.Usables.Scp330;
+using MapGeneration;
+using UnityEngine;
 
 namespace SCP1162;
 
 public class Config
 {
     [Description("Enable debug messages")] public bool Debug { get; set; } = false;
-    [Description("SCP-1162 spawn chance")] public int PercentSpawn { get; set; } = 100;
 
     [Description(
         "How much damage should players get when using Scp-1162 without holding an item in hand (set to 0 to disable)")]
@@ -15,9 +16,6 @@ public class Config
 
     [Description("The chance that the item disappears in % (set to 0 to disable)")]
     public float PercentDisappearing { get; set; } = 30;
-
-    [Description("The chance that the player gets a candy in % (set to 0 to disable)")]
-    public float PercentCandy { get; set; } = 10;
 
     [Description("What items should Scp-1162 be able to give")]
     public List<ItemType> ItemsToGive { get; set; } =
@@ -48,25 +46,6 @@ public class Config
         ItemType.Radio
     ];
 
-    [Description("What candies should Scp-1162 be able to give")]
-    public List<CandyKindID> CandiesToGive { get; set; } =
-    [
-        CandyKindID.None,
-        CandyKindID.Rainbow,
-        CandyKindID.Yellow,
-        CandyKindID.Purple,
-        CandyKindID.Red,
-        CandyKindID.Green,
-        CandyKindID.Blue,
-        CandyKindID.Pink,
-        CandyKindID.Orange,
-        CandyKindID.White,
-        CandyKindID.Gray,
-        CandyKindID.Black,
-        CandyKindID.Brown,
-        CandyKindID.Evil
-    ];
-
     [Description("Message sent when interacting with Scp-1162 without holding an item in hand")]
     public string DamageHint { get; set; } = "<color=red>Dont stick your Hand in unknown holes ( ͡° ͜ʖ ͡° )</color>";
 
@@ -76,4 +55,28 @@ public class Config
 
     [Description("Message sent when the item disappears")]
     public string LostItemHint { get; set; } = "<color=red>You lost your item</color>";
+
+    [Description("This option is for a custom SCP-1162 location")]
+    public List<CustomRoomLocationData> CustomRoomLocations { get; set; } =
+    [
+        new()
+        {
+            RoomName = RoomName.Lcz173,
+            Offset = new Vector3(16.414f, 13.234f, 3.690f),
+            RotationX = 0,
+            RotationY = 0,
+            RotationZ = 0,
+            Chance = 100f
+        }
+    ];
+
+    public class CustomRoomLocationData
+    {
+        public RoomName RoomName { get; set; }
+        public Vector3 Offset { get; set; }
+        public float RotationX { get; set; }
+        public float RotationY { get; set; }
+        public float RotationZ { get; set; }
+        public float Chance { get; set; }
+    }
 }
