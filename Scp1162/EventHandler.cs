@@ -109,6 +109,11 @@ public class EventHandler : CustomEventsHandler
                 {                
                     var randomItem = items.RandomItem();
                     var item = player.AddItem(randomItem);
+                    if (item is FirearmItem firearmItem && !Plugin.Instance.Config.GiveWeaponWithAmmo)
+                    {
+                        firearmItem.StoredAmmo = 0;
+                        firearmItem.ChamberedAmmo = 0;
+                    }
                     player.CurrentItem = item;
                     return;
                 }

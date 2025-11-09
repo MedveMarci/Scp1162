@@ -12,7 +12,10 @@ public class Config
     
     [Description("Can Scp-3114 use SCP-1162?")]
     public bool CanScp3114Use { get; set; } = false;
-
+    
+    [Description("Should Scp-1162 give the weapon with ammo (if the item given is a weapon)")]
+    public bool GiveWeaponWithAmmo { get; set; } = false;
+    
     [Description(
         "How much damage should players get when using Scp-1162 without holding an item in hand (set to 0 to disable)")]
     public int HealthMinus { get; set; } = 25;
