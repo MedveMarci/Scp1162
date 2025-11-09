@@ -61,8 +61,8 @@ public class Config
         new()
         {
             RoomName = RoomName.Lcz173,
-            Offset = new Vector3(16.414f, 13.234f, 3.690f),
-            Rotation = new Vector3(0f, 0f, 0f),
+            Offset = new Vector3(16f, 12.7f, 3.7f),
+            Rotation = new Vector3(0f, 90f, 0f),
             Chance = 100f
         }
     ];
