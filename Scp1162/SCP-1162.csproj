@@ -30,7 +30,7 @@
         <Compile Include="Config.cs"/>
         <Compile Include="EventHandler.cs"/>
         <Compile Include="LogManager.cs"/>
-        <Compile Include="Plugin.cs"/>
+        <Compile Include="Scp1162.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="RespawnCommand.cs"/>
         <Compile Include="VersionManager.cs"/>

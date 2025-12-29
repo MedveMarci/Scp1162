@@ -9,9 +9,9 @@ namespace SCP1162;
 
 public class Config
 {
-    [Description("Enable debug messages")] public bool Debug { get; set; } = false;
-
-    [YamlIgnore]
+    [Description("Enable debug messages")] 
+    public bool Debug { get; set; } = false;
+    
     [Description("Should SCP-1162 use pickup interaction?")]
     public bool UsePickup { get; set; } = false;
 
@@ -69,13 +69,7 @@ public class Config
         CandyKindID.Red,
         CandyKindID.Green,
         CandyKindID.Blue,
-        CandyKindID.Pink,
-        CandyKindID.Orange,
-        CandyKindID.White,
-        CandyKindID.Gray,
-        CandyKindID.Black,
-        CandyKindID.Brown,
-        CandyKindID.Evil
+        CandyKindID.Pink
     ];
 
     [Description("Message sent when interacting with Scp-1162 without holding an item in hand")]
@@ -87,6 +81,9 @@ public class Config
 
     [Description("Message sent when the item disappears")]
     public string LostItemHint { get; set; } = "<color=red>You lost your item</color>";
+    
+    [Description("Message sent when trying to use SCP-1162 with a Snowball")]
+    public string CantUseSnowball { get; set; } = "<color=red>You can't use SCP-1162 with a Snowball!</color>";
 
     [Description("This option is for a custom SCP-1162 location")]
     public List<CustomRoomLocationData> CustomRoomLocations { get; set; } =
