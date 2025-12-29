@@ -7,6 +7,7 @@ using InventorySystem.Items;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
+using LabApi.Loader.Features.Plugins;
 using MEC;
 using PlayerRoles;
 using UnityEngine;
@@ -68,14 +69,14 @@ public class EventHandler : CustomEventsHandler
         {
             LogManager.Debug($"Player {ev.Player.Nickname} interacted with {ev.Interactable.GameObject.name}");
             if (ev.Interactable.GameObject.name != "SCP1162") return;
-            if (Plugin.Instance.Config == null) return;
-            if (ev.Player.Role is RoleTypeId.Scp3114 && !Plugin.Instance.Config.CanScp3114Use) return;
-            var percentDisappearing = Plugin.Instance.Config.PercentDisappearing;
+            if (Scp1162.Instance.Config == null) return;
+            if (ev.Player.Role is RoleTypeId.Scp3114 && !Scp1162.Instance.Config.CanScp3114Use) return;
+            var percentDisappearing = Scp1162.Instance.Config.PercentDisappearing;
             if (ev.Player.CurrentItem != null)
             {
                 if (ev.Player.CurrentItem.Type == ItemType.Snowball)
                 {
-                    ev.Player.SendHint("<color=red>You can't use SCP-1162 with a Snowball!</color>");
+                    ev.Player.SendHint(Scp1162.Instance.Config.CantUseSnowball);
                     return;
                 }
 
@@ -86,15 +87,15 @@ public class EventHandler : CustomEventsHandler
                 else
                 {
                     if (ev.Player.CurrentItem != null) ev.Player.RemoveItem(ev.Player.CurrentItem);
-                    ev.Player.SendHint(Plugin.Instance.Config.LostItemHint);
+                    ev.Player.SendHint(Scp1162.Instance.Config.LostItemHint);
                 }
             }
             else
             {
-                if (Plugin.Instance.Config.HealthMinus == 0) return;
-                ev.Player.Damage(Plugin.Instance.Config.HealthMinus, "SCP-1162");
+                if (Scp1162.Instance.Config.HealthMinus == 0) return;
+                ev.Player.Damage(Scp1162.Instance.Config.HealthMinus, "SCP-1162");
                 ev.Player.EnableEffect<Burned>(3, 5);
-                ev.Player.SendHint(Plugin.Instance.Config.DamageHint);
+                ev.Player.SendHint(Scp1162.Instance.Config.DamageHint);
             }
         }
         catch (Exception e)
@@ -111,14 +112,14 @@ public class EventHandler : CustomEventsHandler
         {
             ev.IsAllowed = false;
             LogManager.Debug($"Player {ev.Player.Nickname} tried to pick up SCP-1162 pickup.");
-            if (Plugin.Instance.Config == null) return;
-            if (ev.Player.Role is RoleTypeId.Scp3114 && !Plugin.Instance.Config.CanScp3114Use) return;
-            var percentDisappearing = Plugin.Instance.Config.PercentDisappearing;
+            if (Scp1162.Instance.Config == null) return;
+            if (ev.Player.Role is RoleTypeId.Scp3114 && !Scp1162.Instance.Config.CanScp3114Use) return;
+            var percentDisappearing = Scp1162.Instance.Config.PercentDisappearing;
             if (ev.Player.CurrentItem != null)
             {
                 if (ev.Player.CurrentItem.Type == ItemType.Snowball)
                 {
-                    ev.Player.SendHint("<color=red>You can't use SCP-1162 with a Snowball!</color>");
+                    ev.Player.SendHint(Scp1162.Instance.Config.CantUseSnowball);
                     return;
                 }
 
@@ -129,15 +130,15 @@ public class EventHandler : CustomEventsHandler
                 else
                 {
                     if (ev.Player.CurrentItem != null) ev.Player.RemoveItem(ev.Player.CurrentItem);
-                    ev.Player.SendHint(Plugin.Instance.Config.LostItemHint);
+                    ev.Player.SendHint(Scp1162.Instance.Config.LostItemHint);
                 }
             }
             else
             {
-                if (Plugin.Instance.Config.HealthMinus == 0) return;
-                ev.Player.Damage(Plugin.Instance.Config.HealthMinus, "SCP-1162");
+                if (Scp1162.Instance.Config.HealthMinus == 0) return;
+                ev.Player.Damage(Scp1162.Instance.Config.HealthMinus, "SCP-1162");
                 ev.Player.EnableEffect<Burned>(3, 5);
-                ev.Player.SendHint(Plugin.Instance.Config.DamageHint);
+                ev.Player.SendHint(Scp1162.Instance.Config.DamageHint);
             }
         }
 
@@ -146,7 +147,7 @@ public class EventHandler : CustomEventsHandler
 
     public override void OnServerWaitingForPlayers()
     {
-        _ = VersionManager.CheckForUpdatesAsync(Plugin.Instance.Version);
+        _ = VersionManager.CheckForUpdatesAsync(Scp1162.Instance.Version);
         DestroyScp1162();
         base.OnServerWaitingForPlayers();
     }
@@ -155,8 +156,8 @@ public class EventHandler : CustomEventsHandler
     {
         try
         {
-            if (Plugin.Instance.Config == null) return;
-            foreach (var customRoomLocation in Plugin.Instance.Config.CustomRoomLocations)
+            if (Scp1162.Instance.Config == null) return;
+            foreach (var customRoomLocation in Scp1162.Instance.Config.CustomRoomLocations)
             {
                 if (Random.Range(0f, 100f) > customRoomLocation.Chance)
                     continue;
@@ -167,7 +168,7 @@ public class EventHandler : CustomEventsHandler
 
                 var mainOffset = room.Transform.TransformPoint(customRoomLocation.Offset);
                 var rotation = room.Transform.rotation * Quaternion.Euler(customRoomLocation.Rotation);
-                if (Plugin.Instance.Config.UsePickup)
+                if (Scp1162.Instance.Config.UsePickup)
                 {
                     var scp1162Pick = Pickup.Create(ItemType.SCP500, mainOffset);
                     if (scp1162Pick == null || scp1162Pick.Rigidbody == null)
@@ -240,22 +241,22 @@ public class EventHandler : CustomEventsHandler
     {
         try
         {
-            if (Plugin.Instance.Config == null) return;
-            var items = Plugin.Instance.Config.ItemsToGive;
+            if (Scp1162.Instance.Config == null) return;
+            var items = Scp1162.Instance.Config.ItemsToGive;
 
-            player.SendHint(Plugin.Instance.Config.InteractionHint, 20);
+            player.SendHint(Scp1162.Instance.Config.InteractionHint, 20);
             if (player.CurrentItem != null) player.RemoveItem(player.CurrentItem);
             player.CurrentItem = null;
 
             Timing.CallDelayed(0.1f, () =>
             {
                 var isFullOfCandy = player.Items.Any(candyBag => candyBag is Scp330Item { Candies.Count: >= 6 });
-                if (isFullOfCandy || Plugin.Instance.Config.PercentCandy == 0 ||
-                    Random.Range(0f, 100f) > Plugin.Instance.Config.PercentCandy)
+                if (isFullOfCandy || Scp1162.Instance.Config.PercentCandy == 0 ||
+                    Random.Range(0f, 100f) > Scp1162.Instance.Config.PercentCandy)
                 {
                     var randomItem = items.RandomItem();
                     var item = player.AddItem(randomItem);
-                    if (item is FirearmItem firearmItem && !Plugin.Instance.Config.GiveWeaponWithAmmo)
+                    if (item is FirearmItem firearmItem && !Scp1162.Instance.Config.GiveWeaponWithAmmo)
                     {
                         firearmItem.StoredAmmo = 0;
                         firearmItem.ChamberedAmmo = 0;
@@ -265,7 +266,7 @@ public class EventHandler : CustomEventsHandler
                     return;
                 }
 
-                var randomCandy = Plugin.Instance.Config.CandiesToGive.RandomItem();
+                var randomCandy = Scp1162.Instance.Config.CandiesToGive.RandomItem();
                 player.GiveCandy(randomCandy, ItemAddReason.Undefined);
             });
         }
