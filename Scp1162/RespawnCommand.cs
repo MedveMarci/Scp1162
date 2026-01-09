@@ -1,7 +1,7 @@
 ﻿using System;
 using CommandSystem;
 
-namespace SCP1162;
+namespace Scp1162;
 
 [CommandHandler(typeof(RemoteAdminCommandHandler))]
 [CommandHandler(typeof(GameConsoleCommandHandler))]

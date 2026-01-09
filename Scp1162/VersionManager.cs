@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SCP1162;
+namespace Scp1162;
 
 public static class VersionManager
 {

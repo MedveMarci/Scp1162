@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCP-1162", "Scp1162\SCP-1162.csproj", "{8A5C60D4-F705-4C74-A359-7D8E8E916D98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scp1162", "Scp1162\Scp1162.csproj", "{8A5C60D4-F705-4C74-A359-7D8E8E916D98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

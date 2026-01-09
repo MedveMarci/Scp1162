@@ -7,8 +7,8 @@
         <ProjectGuid>{8A5C60D4-F705-4C74-A359-7D8E8E916D98}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>SCP-1162</RootNamespace>
-        <AssemblyName>SCP-1162</AssemblyName>
+        <RootNamespace>Scp1162</RootNamespace>
+        <AssemblyName>Scp1162</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <LangVersion>latest</LangVersion>
         <FileAlignment>512</FileAlignment>
@@ -40,8 +40,8 @@
         <Compile Include="Config.cs"/>
         <Compile Include="EventHandler.cs"/>
         <Compile Include="LogManager.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Scp1162.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="RespawnCommand.cs"/>
         <Compile Include="VersionManager.cs"/>
     </ItemGroup>

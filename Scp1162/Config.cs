@@ -4,7 +4,7 @@ using InventorySystem.Items.Usables.Scp330;
 using MapGeneration;
 using UnityEngine;
 
-namespace SCP1162;
+namespace Scp1162;
 
 public class Config
 {

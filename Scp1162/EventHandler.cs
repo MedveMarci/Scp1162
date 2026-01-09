@@ -15,7 +15,7 @@ using PrimitiveObjectToy = LabApi.Features.Wrappers.PrimitiveObjectToy;
 using Random = UnityEngine.Random;
 using TextToy = LabApi.Features.Wrappers.TextToy;
 
-namespace SCP1162;
+namespace Scp1162;
 
 public class EventHandler : CustomEventsHandler
 {

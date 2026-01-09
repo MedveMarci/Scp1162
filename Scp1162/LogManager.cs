@@ -1,7 +1,7 @@
 ﻿using System;
 using Logger = LabApi.Features.Console.Logger;
 
-namespace SCP1162;
+namespace Scp1162;
 
 internal class LogManager
 {
