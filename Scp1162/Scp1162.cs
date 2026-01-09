@@ -12,7 +12,7 @@ public class Scp1162 : Plugin<Config>
     public override string Description => "A mysterious hole that gives random items.";
     public override string Name => "SCP-1162";
     public override string Author => "MedveMarci";
-    public override Version Version { get; } = new(1, 3, 0);
+    public override Version Version { get; } = new(1, 3, 1);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
     private EventHandler EventHandler { get; } = new();
 

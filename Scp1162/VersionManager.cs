@@ -148,7 +148,8 @@ public static class VersionManager
         }
         catch (Exception e)
         {
-            LogManager.Error($"Version check failed.\n{e}");
+            LogManager.Error("Version check failed. This is not critical, you can ignore it.");
+            LogManager.Debug($"Version check failed.\n{e}");
         }
     }
 

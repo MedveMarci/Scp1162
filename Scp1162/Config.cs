@@ -3,7 +3,6 @@ using System.ComponentModel;
 using InventorySystem.Items.Usables.Scp330;
 using MapGeneration;
 using UnityEngine;
-using YamlDotNet.Serialization;
 
 namespace SCP1162;
 
