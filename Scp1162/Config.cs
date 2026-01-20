@@ -10,7 +10,7 @@ public class Config
 {
     [Description("Enable debug messages")] 
     public bool Debug { get; set; } = false;
-    
+
     [Description("Should SCP-1162 use pickup interaction?")]
     public bool UsePickup { get; set; } = false;
 
@@ -80,18 +80,30 @@ public class Config
 
     [Description("Message sent when the item disappears")]
     public string LostItemHint { get; set; } = "<color=red>You lost your item</color>";
-    
+
     [Description("Message sent when trying to use SCP-1162 with a Snowball")]
     public string CantUseSnowball { get; set; } = "<color=red>You can't use SCP-1162 with a Snowball!</color>";
 
-    [Description("This option is for a custom SCP-1162 location")]
-    public List<CustomRoomLocationData> CustomRoomLocations { get; set; } =
+    [Description("This option is for a custom SCP-1162 Text location")]
+    public List<CustomRoomLocationData> CustomTextRoomLocations { get; set; } =
     [
         new()
         {
             RoomName = RoomName.Lcz173,
             Offset = new Vector3(16f, 12.7f, 3.7f),
             Rotation = new Vector3(0f, 0f, 0f),
+            Chance = 100f
+        }
+    ];
+
+    [Description("This option is for a custom SCP-1162 Pickup location")]
+    public List<CustomRoomLocationData> CustomPickupLocations { get; set; } =
+    [
+        new()
+        {
+            RoomName = RoomName.Lcz173,
+            Offset = new Vector3(17f, 13.1f, 3f),
+            Rotation = new Vector3(90f, 0f, 0f),
             Chance = 100f
         }
     ];

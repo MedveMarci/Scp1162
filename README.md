@@ -7,10 +7,11 @@ An SCP: Secret Laboratory LabApi plugin which adds SCP-1162 into the game.
 - You can add multiple SCP-1162 in the ``config.yml``.
 - You can choose between how SCP-1162 should spawn, as a TextToy (picture) or as a Pickup (Item).
 - You can configurate which items should SCP-1162 be able to give to the player.
-- You can specify the spawn locations. 
+- You can specify the spawn locations.
 - For ItemTypes and RoomNames check the [wiki](https://github.com/MedveMarci/SCP-1162/wiki/).
 
 # For Support
+
 <div align="left">
 <a href='https://discord.gg/KmpA8cfaSA'><img src='https://www.allkpop.com/upload/2021/01/content/262046/1611711962-discord-button.png' height="100"></a>
 </div>

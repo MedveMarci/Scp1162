@@ -7,18 +7,18 @@ namespace Scp1162;
 
 public class Scp1162 : Plugin<Config>
 {
-    public static Scp1162 Instance;
+    public static Scp1162 Singleton;
     public string githubRepo = "MedveMarci/Scp1162";
     public override string Description => "A mysterious hole that gives random items.";
     public override string Name => "Scp1162";
     public override string Author => "MedveMarci";
-    public override Version Version { get; } = new(1, 3, 1);
+    public override Version Version { get; } = new(1, 3, 2);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
     private EventHandler EventHandler { get; } = new();
 
     public override void Enable()
     {
-        Instance = this;
+        Singleton = this;
         CustomHandlersManager.RegisterEventsHandler(EventHandler);
     }
 
@@ -26,6 +26,6 @@ public class Scp1162 : Plugin<Config>
     public override void Disable()
     {
         CustomHandlersManager.RegisterEventsHandler(EventHandler);
-        Instance = this;
+        Singleton = this;
     }
 }
