@@ -102,7 +102,7 @@ public class EventHandler : CustomEventsHandler
                 return;
             }
 
-            if (ev.Player.Role is RoleTypeId.Scp3114 && !Scp1162.Singleton.Config.CanScp3114Use)
+            if ((ev.Player.Role is RoleTypeId.Scp3114 && !Scp1162.Singleton.Config.CanScp3114Use) || (ev.Player is { IsSCP: true, Role: not RoleTypeId.Scp3114 } && !Scp1162.Singleton.Config.CanScpsUse))
             {
                 LogManager.Debug($"Player {ev.Player.Nickname} role {ev.Player.Role} not allowed to use SCP-1162.");
                 return;

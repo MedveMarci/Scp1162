@@ -16,6 +16,9 @@ public class Config
 
     [Description("Can Scp-3114 use SCP-1162?")]
     public bool CanScp3114Use { get; set; } = false;
+    
+    [Description("Can SCPs (SCP-3114 is not included here) use SCP-1162?")]
+    public bool CanScpsUse { get; set; } = false;
 
     [Description("Should Scp-1162 give the weapon with ammo (if the item given is a weapon)")]
     public bool GiveWeaponWithAmmo { get; set; } = false;
