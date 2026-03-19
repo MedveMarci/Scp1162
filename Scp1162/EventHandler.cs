@@ -238,7 +238,7 @@ public class EventHandler : CustomEventsHandler
         base.OnServerWaitingForPlayers();
     }
 
-    internal static void SpawnScp1162()
+    public static void SpawnScp1162()
     {
         try
         {
@@ -344,7 +344,7 @@ public class EventHandler : CustomEventsHandler
         }
     }
 
-    internal static void DestroyScp1162()
+    public static void DestroyScp1162()
     {
         try
         {
