@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using AdminToys;
 using CustomPlayerEffects;
+using InventorySystem;
+using InventorySystem.Configs;
 using InventorySystem.Items;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
@@ -234,7 +236,7 @@ public class EventHandler : CustomEventsHandler
 
     public override void OnServerWaitingForPlayers()
     {
-        ApiManager.CheckForUpdates();
+        VersionManager.CheckForUpdates();
         base.OnServerWaitingForPlayers();
     }
 
@@ -369,12 +371,6 @@ public class EventHandler : CustomEventsHandler
     {
         try
         {
-            if (Scp1162.Singleton.Config == null)
-            {
-                LogManager.Error("[GiveItem] SCP-1162 configuration is null.");
-                return;
-            }
-
             var items = Scp1162.Singleton.Config.ItemsToGive;
 
             LogManager.Debug($"GiveItem: giving to player {player.Nickname}");
@@ -396,6 +392,13 @@ public class EventHandler : CustomEventsHandler
                     Random.Range(0f, 100f) > Scp1162.Singleton.Config.PercentCandy)
                 {
                     var randomItem = items.RandomItem();
+                    int num = Mathf.Abs(InventoryLimits.GetCategoryLimit(randomItem.GetTemplate().Category, player.ReferenceHub));
+
+                    while (player.Items.Count(item => item.Category == randomItem.GetTemplate().Category) >= num)
+                    {
+                        randomItem = items.RandomItem();
+                        num = Mathf.Abs(InventoryLimits.GetCategoryLimit(randomItem.GetTemplate().Category, player.ReferenceHub));
+                    }
                     LogManager.Debug($"GiveItem: selected item {randomItem}");
                     var item = player.AddItem(randomItem);
                     if (item is FirearmItem firearmItem && !Scp1162.Singleton.Config.GiveWeaponWithAmmo)
