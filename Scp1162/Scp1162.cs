@@ -8,11 +8,10 @@ namespace Scp1162;
 public class Scp1162 : Plugin<Config>
 {
     public static Scp1162 Singleton;
-    public string githubRepo = "MedveMarci/Scp1162";
     public override string Description => "A mysterious hole that gives random items.";
     public override string Name => "Scp1162";
     public override string Author => "MedveMarci";
-    public override Version Version { get; } = new(1, 3, 4);
+    public override Version Version { get; } = new(1, 3, 5);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
     private EventHandler EventHandler { get; } = new();
 
